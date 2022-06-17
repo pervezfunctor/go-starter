@@ -2,10 +2,6 @@ package main
 
 import "math"
 
-type Shape interface {
-	Area() float64
-}
-
 type Rectangle struct {
 	width  int
 	height int
@@ -13,6 +9,10 @@ type Rectangle struct {
 
 type Circle struct {
 	radius float64
+}
+
+type Shape interface {
+	Area() float64
 }
 
 func (r Rectangle) Area() float64 {

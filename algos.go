@@ -21,7 +21,7 @@ func SliceEqual[T comparable](x, y []T) bool {
 	return true
 }
 
-func AppendInt[T any](x []T, y T) []T {
+func AppendElem[T any](x []T, y T) []T {
 	var z []T
 	zlen := len(x) + 1
 

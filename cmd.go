@@ -12,5 +12,3 @@ func Cmd() string {
 
 	return s
 }
-
-// fmt.Println(strings.Join(os.Args[1:], " "))

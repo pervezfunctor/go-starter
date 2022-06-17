@@ -1,10 +1,40 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
+
+func go1(ch chan int) {
+	time.Sleep(time.Second * 2)
+	ch <- 1
+}
+
+func go2(ch chan int) {
+	time.Sleep(time.Second * 2)
+	ch <- 2
+}
+
+func SelectExample() {
+	ch1 := make(chan int)
+	ch2 := make(chan int)
+	go go1(ch1)
+	go go2(ch2)
+
+	for {
+		select {
+		case <-ch1:
+			fmt.Println("ch1")
+		case <-ch2:
+			fmt.Println("ch2")
+		case <-time.After(time.Second * 3):
+			fmt.Println("timeout")
+			return
+		}
+	}
+
+}
 
 func main() {
-	s := []int{3, 1, 7, 5, 8, 4, 3, 2, 9, 5, 10, 21, 4, 3}
-	fmt.Printf("%3v\n", s)
-	InsertionSort(s)
-	fmt.Printf("%5v", s)
+	SpinnerMain()
 }
